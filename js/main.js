@@ -4,7 +4,7 @@
 	const torch = document.querySelector('.light-bg')
 
 	const minTorchSize = 0
-	const maxTorchSize = 20
+	const maxTorchSize = 25
 
 	let torchSize = maxTorchSize
 	let clientX, clientY

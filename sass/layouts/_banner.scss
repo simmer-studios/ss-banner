@@ -6,12 +6,11 @@
 	min-height: 600px;
 	width: 100%;
 
-	background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)),
-		url(https://i.imgur.com/iiOgRu4.jpg);
+	background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url($backgroundImageUrl);
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
-	// cursor: none;
+	cursor: none;
 
 	display: flex;
 	align-items: center;
@@ -32,11 +31,11 @@
 		width: 100%;
 		height: 100%;
 
-		background: url(https://i.imgur.com/iiOgRu4.jpg);
+		background: url($backgroundImageUrl);
 		background-size: cover;
 		background-position: center;
 		background-repeat: no-repeat;
-		// cursor: none;
+		cursor: none;
 
 		clip-path: circle(0px at 50% 50%);
 
@@ -67,10 +66,6 @@
 				position: absolute;
 				width: 45px;
 				animation: floating 4s ease-in-out infinite;
-
-				// @include respond(tablet-portrait) {
-				// 	width: 45px;
-				// }
 			}
 
 			.apple {
