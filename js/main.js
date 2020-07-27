@@ -32,18 +32,20 @@
 		'Let it simmer',
 	]
 
-	const maxSpeed = 80
+	const maxSpeed = 120
 	const minSpeed = 60
-	const backspaceDelay = 1000
+	const writeDelay = 350
+	const backspaceSpeed = 40
+	const backspaceDelay = 1250
 
 	function getRandomSpeed() {
-		return Math.floor(Math.random() * maxSpeed + minSpeed)
+		return Math.floor(Math.random() * (maxSpeed - minSpeed) + minSpeed)
 	}
 
 	function backspace() {
 		if (slogan.innerHTML.length > 0) {
 			slogan.innerHTML = slogan.innerHTML.substr(0, slogan.innerHTML.length - 1)
-			setTimeout(backspace, maxSpeed)
+			setTimeout(backspace, backspaceSpeed)
 		} else {
 			if (textArrayIndex < texts.length - 1) {
 				textArrayIndex += 1
@@ -51,7 +53,7 @@
 				textArrayIndex = 0
 			}
 
-			write()
+			setTimeout(write, writeDelay)
 		}
 	}
 
@@ -61,10 +63,11 @@
 			setTimeout(write, getRandomSpeed())
 			textCharIndex += 1
 		} else {
+			slogan.innerHTML += '_'
 			textCharIndex = 0
 			setTimeout(backspace, backspaceDelay)
 		}
 	}
 
-	setTimeout(write, 1000)
+	setTimeout(write, writeDelay)
 })()
