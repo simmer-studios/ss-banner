@@ -1,0 +1,31 @@
+{
+	"name": "simmer-studios-banner",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"start": "npm-run-all --parallel devServer watch:sass",
+		"build": "npm-run-all compile:sass prefix:css minify:css create:folders copy:files",
+		"prebuild": "rm -rf build",
+		"postbuild": "npm run delete:css",
+		"devServer": "live-server",
+		"watch:sass": "node-sass sass/main.scss css/style.css -w",
+		"compile:sass": "node-sass sass/main.scss css/style.comp.css",
+		"prefix:css": "postcss css/style.comp.css --use autoprefixer -o css/style.prefix.css",
+		"minify:css": "node-sass css/style.prefix.css build/css/style.css --output-style compressed",
+		"create:folders": "mkdirp build/images && mkdirp build/js && mkdirp build/fonts",
+		"copy:files": "cp index.html build && cp images/* build/images && cp js/* build/js && cp fonts/* build/fonts",
+		"delete:css": "rm -rf css"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"autoprefixer": "^9.8.5",
+		"live-server": "^1.2.1",
+		"mkdirp": "^1.0.4",
+		"node-sass": "^4.14.1",
+		"npm-run-all": "^4.1.5",
+		"postcss-cli": "^7.1.1"
+	}
+}

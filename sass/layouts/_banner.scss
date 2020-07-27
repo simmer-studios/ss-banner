@@ -1,0 +1,119 @@
+.dark-bg {
+	z-index: 0;
+	position: relative;
+
+	height: 100vh;
+	min-height: 600px;
+	width: 100%;
+
+	background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)),
+		url(https://i.imgur.com/iiOgRu4.jpg);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	// cursor: none;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	.title {
+		width: 40%;
+		min-width: 350px;
+		max-width: 600px;
+		animation: floating 4s ease-in-out infinite;
+	}
+
+	.light-bg {
+		z-index: 0;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+
+		background: url(https://i.imgur.com/iiOgRu4.jpg);
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+		// cursor: none;
+
+		clip-path: circle(0px at 50% 50%);
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		.slogan {
+			font-family: 'Zeuty Sans', sans-serif;
+			width: 25%;
+			max-width: 400px;
+			font-size: 50px;
+			word-wrap: break-word;
+			text-transform: uppercase;
+			text-align: center;
+			letter-spacing: 2px;
+			word-spacing: 5px;
+		}
+
+		.items {
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 100%;
+			width: 100%;
+
+			& > * {
+				position: absolute;
+				width: 45px;
+				animation: floating 4s ease-in-out infinite;
+
+				// @include respond(tablet-portrait) {
+				// 	width: 45px;
+				// }
+			}
+
+			.apple {
+				top: 60%;
+				left: 40%;
+				animation-delay: 0.5s;
+			}
+
+			.bacon-1 {
+				top: 40%;
+				left: 35%;
+				animation-delay: 0.5s;
+			}
+
+			.bacon-2 {
+				top: 30%;
+				left: 40%;
+				animation-delay: 1.2s;
+			}
+
+			.cucumber {
+				top: 30%;
+				left: 55%;
+				animation-delay: 0.1s;
+			}
+
+			.lemon-1 {
+				top: 35%;
+				right: 35%;
+				animation-delay: 0s;
+			}
+
+			.lemon-2 {
+				top: 28%;
+				right: 30%;
+				animation-delay: 1s;
+			}
+
+			.tako {
+				top: 65%;
+				left: 55%;
+				animation-delay: 2.3s;
+			}
+		}
+	}
+}
