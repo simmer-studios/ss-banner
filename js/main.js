@@ -1,3 +1,13 @@
+// VIEWPORT HEIGHT
+;(function viewport() {
+	// We listen to the resize event
+	window.addEventListener('resize', () => {
+		// We execute the same script as before
+		let vh = window.innerHeight * 0.01
+		document.documentElement.style.setProperty('--vh', `${vh}px`)
+	})
+})()
+
 // TORCH ==========================================
 ;(function main() {
 	const banner = document.querySelector('.dark-bg')
@@ -39,7 +49,7 @@
 	function moveTorch(event) {
 		if (event.changedTouches && event.changedTouches.length > 0) {
 			clientX = event.changedTouches[0].clientX
-			clientY = event.changedTouches[0].clientY
+			clientY = event.changedTouches[0].clientY - 75
 		} else {
 			clientX = event.clientX
 			clientY = event.clientY
