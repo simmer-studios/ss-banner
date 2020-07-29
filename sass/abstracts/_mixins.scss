@@ -28,26 +28,27 @@ $breakpoint argument choices:
 - wide-desktop
 */
 @mixin respond($breakpoint) {
+	@if $breakpoint == small-phone {
+		@media only screen and (max-width: 375px) {
+			@content;
+		}
+	}
 	@if $breakpoint == phone {
-		// 600px
 		@media only screen and (max-width: 600px) {
 			@content;
 		}
 	}
 	@if $breakpoint == tablet-portrait {
-		// 900px
 		@media only screen and (max-width: 900px) {
 			@content;
 		}
 	}
 	@if $breakpoint == tablet-landscape {
-		// 1200px
 		@media only screen and (max-width: 1200px) {
 			@content;
 		}
 	}
 	@if $breakpoint == wide-desktop {
-		// 1800px
 		@media only screen and (min-width: 1800px) {
 			@content;
 		}
