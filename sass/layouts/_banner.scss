@@ -170,6 +170,7 @@
 			.lemon-2 {
 				top: 28%;
 				right: 30%;
+				animation: rotating 4s ease-in-out infinite;
 				animation-delay: 1s;
 
 				@include respond(tablet-portrait) {
