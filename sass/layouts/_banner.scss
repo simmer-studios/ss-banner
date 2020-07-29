@@ -6,8 +6,7 @@
 	min-height: calc(var(--vh, 1vh) * 100);
 	width: 100%;
 
-	background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)),
-		url($desktopBackgroundImageUrl);
+	background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url($desktopBackgroundImageUrl);
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -18,8 +17,7 @@
 	justify-content: center;
 
 	@include respond(phone) {
-		background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)),
-			url($mobileBackgroundImageUrl);
+		background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url($mobileBackgroundImageUrl);
 	}
 
 	.logo {
@@ -36,7 +34,7 @@
 		cursor: pointer;
 		color: $color-white;
 		font-size: 16px;
-		font-family: 'Optician Sans';
+		font-family: "Optician Sans";
 		letter-spacing: 3px;
 		background: none;
 		border: none;
@@ -83,7 +81,8 @@
 			background-image: url($mobileBackgroundImageUrl);
 		}
 		.slogan {
-			font-family: 'Zeuty Sans', sans-serif;
+			color: #161514;
+			font-family: "Zeuty Sans", sans-serif;
 			width: 100%;
 			max-width: 350px;
 			font-size: 50px;
