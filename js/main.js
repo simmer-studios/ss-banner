@@ -121,22 +121,14 @@
 
 	// SWITCH BUTTON ==================================
 	switchButton.addEventListener('click', function (event) {
-		alert('Clicked')
-		switchButton.blur()
 		if (!switchButton.classList.contains('on')) {
-			alert('iOS Sux')
 			turnOnTorch(event)
 		}
 	})
 
-	switchButton.addEventListener('touchstart', function (event) {
+	switchButton.addEventListener('touchend', function (event) {
 		event.preventDefault()
-
-		alert('Clicked')
-
-		switchButton.blur()
 		if (!switchButton.classList.contains('on')) {
-			alert('iOS Sux')
 			turnOnTorch(event)
 		}
 	})
