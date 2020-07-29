@@ -113,7 +113,9 @@
 
 	// SWITCH BUTTON ==================================
 	switchButton.addEventListener('click', (event) => {
-		switchButton.innerHTML = 'TAPPED! PLEASE!'
+		if (!switchButton.classList.contains('on')) {
+			turnOnTorch(event)
+		}
 	})
 })()
 
