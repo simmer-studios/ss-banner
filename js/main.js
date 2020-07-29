@@ -17,9 +17,20 @@ document.documentElement.style.setProperty('--vh', `${vh}px`)
 	let touched = false
 
 	// TORCH ==================
-	function updateClipPath() {
-		torch.style.clipPath = `circle(${torchSize}% at ${clientX}px ${clientY}px)`
-	}
+	// function updateClipPath() {
+	// 	torch.style['-webkit-clip-path'] = `circle(${torchSize}% at ${clientX}px ${clientY}px)`
+	// }
+
+	const updateClipPath =
+		'clipPath' in torch.style
+			? () => {
+					torch.style.clipPath = `circle(${torchSize}% at ${clientX}px ${clientY}px)`
+			  }
+			: () => {
+					torch.style[
+						'-webkit-clip-path'
+					] = `circle(${torchSize}% at ${clientX}px ${clientY}px)`
+			  }
 
 	function increaseTorchSize() {
 		if (torchSize < maxTorchSize) {
