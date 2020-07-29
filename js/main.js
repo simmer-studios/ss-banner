@@ -128,6 +128,18 @@
 			turnOnTorch(event)
 		}
 	})
+
+	switchButton.addEventListener('touchstart', function (event) {
+		event.preventDefault()
+
+		alert('Clicked')
+
+		switchButton.blur()
+		if (!switchButton.classList.contains('on')) {
+			alert('iOS Sux')
+			turnOnTorch(event)
+		}
+	})
 })()
 
 // TYPEWRITER ======================================
