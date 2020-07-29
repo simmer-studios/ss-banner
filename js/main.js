@@ -6,8 +6,6 @@ document.documentElement.style.setProperty('--vh', `${vh}px`)
 	const banner = document.querySelector('.dark-bg')
 	const torch = document.querySelector('.light-bg')
 	const switchButton = document.getElementById('switch-button')
-	// const startButton = document.querySelector('.start-button')
-	// const stopButton = document.querySelector('.stop-button')
 
 	const minTorchSize = 0
 	const maxTorchSize = 20
@@ -16,11 +14,7 @@ document.documentElement.style.setProperty('--vh', `${vh}px`)
 	let clientX, clientY
 	let touched = false
 
-	// TORCH ==================
-	// function updateClipPath() {
-	// 	torch.style['-webkit-clip-path'] = `circle(${torchSize}% at ${clientX}px ${clientY}px)`
-	// }
-
+	// TORCH MANIPULATION ==================
 	const updateClipPath =
 		'clipPath' in torch.style
 			? () => {
