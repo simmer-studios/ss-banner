@@ -90,6 +90,8 @@
 			text-transform: uppercase;
 			text-align: center;
 			letter-spacing: -2px;
+			word-spacing: 0px;
+			line-height: 1;
 
 			@include respond(tablet-portrait) {
 				max-width: 300px;
