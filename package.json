@@ -13,8 +13,8 @@
 		"compile:sass": "node-sass sass/main.scss css/style.comp.css",
 		"prefix:css": "postcss css/style.comp.css --use autoprefixer -o css/style.prefix.css",
 		"minify:css": "node-sass css/style.prefix.css build/css/style.css --output-style compressed",
-		"create:folders": "mkdirp build/images && mkdirp build/js && mkdirp build/fonts",
-		"copy:files": "cp index.html build && cp -r images/* build/images && cp js/* build/js && cp fonts/* build/fonts",
+		"create:folders": "mkdirp build/js && mkdirp build/fonts",
+		"copy:files": "cp index.html build && cp js/* build/js && cp fonts/* build/fonts",
 		"delete:css": "rm -rf css"
 	},
 	"keywords": [],
