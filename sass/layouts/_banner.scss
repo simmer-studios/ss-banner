@@ -1,8 +1,9 @@
 .dark-bg {
 	z-index: 0;
 	position: relative;
-	height: 100vh; /* Fallback for browsers that do not support Custom Properties */
-	height: calc(var(--vh, 1vh) * 100);
+	padding: 15px;
+	min-height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+	min-height: calc(var(--vh, 1vh) * 100);
 	width: 100%;
 
 	background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)),
@@ -25,6 +26,7 @@
 		width: 100%;
 		min-width: 300px;
 		max-width: 600px;
+		padding: 15px;
 		animation: floating 4s ease-in-out infinite;
 	}
 
@@ -45,6 +47,10 @@
 		&:focus {
 			outline: none;
 			animation: none;
+		}
+
+		@include respond(small-phone) {
+			font-size: 14px;
 		}
 	}
 
@@ -71,7 +77,6 @@
 		@include respond(phone) {
 			background-image: url($mobileBackgroundImageUrl);
 		}
-
 		.slogan {
 			font-family: 'Zeuty Sans', sans-serif;
 			width: 100%;
@@ -174,6 +179,7 @@
 
 			.noodles {
 				animation: rotating 4s ease-in-out infinite;
+				animation-delay: 1s;
 				width: 250px;
 				top: 35%;
 				right: 25%;

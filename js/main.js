@@ -1,7 +1,7 @@
 // VIEWPORT HEIGHT
 ;(function viewport() {
 	// We listen to the resize event
-	window.addEventListener('resize', () => {
+	window.addEventListener('resize', function () {
 		// We execute the same script as before
 		let vh = window.innerHeight * 0.01
 		document.documentElement.style.setProperty('--vh', `${vh}px`)
@@ -12,7 +12,7 @@
 ;(function main() {
 	const banner = document.querySelector('.dark-bg')
 	const torch = document.querySelector('.light-bg')
-	const switchButton = document.querySelector('.switch-button')
+	const switchButton = document.getElementById('switch-button')
 	// const startButton = document.querySelector('.start-button')
 	// const stopButton = document.querySelector('.stop-button')
 
@@ -24,10 +24,15 @@
 	let touched = false
 
 	// TORCH ==================
+	function updateClipPath() {
+		torch.style.clipPath = `circle(${torchSize}% at ${clientX}px ${clientY}px)`
+		torch.style['-webkit-clip-path'] = `circle(${torchSize}% at ${clientX}px ${clientY}px)`
+	}
+
 	function increaseTorchSize() {
 		if (torchSize < maxTorchSize) {
 			torchSize += 1
-			torch.style.clipPath = `circle(${torchSize}% at ${clientX}px ${clientY}px)`
+			updateClipPath()
 			requestAnimationFrame(increaseTorchSize)
 		} else {
 			switchButton.innerHTML = 'Double Tap Anywhere to Stop'
@@ -38,7 +43,7 @@
 	function decreaseTorchSize() {
 		if (torchSize > minTorchSize) {
 			torchSize -= 1
-			torch.style.clipPath = `circle(${torchSize}% at ${clientX}px ${clientY}px)`
+			updateClipPath()
 			requestAnimationFrame(decreaseTorchSize)
 		} else {
 			switchButton.innerHTML = 'Tap Here to Start'
@@ -55,8 +60,7 @@
 			clientY = event.clientY
 		}
 
-		console.log('Move')
-		torch.style.clipPath = `circle(${torchSize}% at ${clientX}px ${clientY}px)`
+		updateClipPath()
 	}
 
 	function turnOnTorch(event) {
@@ -86,7 +90,9 @@
 			turnOffTorch()
 		} else {
 			touched = true
-			setTimeout(() => (touched = false), 500)
+			setTimeout(function () {
+				touched = false
+			}, 500)
 		}
 	}
 
@@ -102,7 +108,9 @@
 			turnOffTorch()
 		} else {
 			touched = true
-			setTimeout(() => (touched = false), 500)
+			setTimeout(function () {
+				touched = false
+			}, 500)
 			moveTorch(event)
 		}
 	}
@@ -112,7 +120,7 @@
 	}
 
 	// SWITCH BUTTON ==================================
-	switchButton.addEventListener('click', (event) => {
+	switchButton.addEventListener('click', function (event) {
 		if (!switchButton.classList.contains('on')) {
 			turnOnTorch(event)
 		}
