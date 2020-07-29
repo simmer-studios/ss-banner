@@ -1,21 +1,62 @@
-// TORCH ===========================================
+// TORCH ==========================================
 ;(function main() {
 	const banner = document.querySelector('.dark-bg')
 	const torch = document.querySelector('.light-bg')
+	const startButton = document.querySelector('.start-button')
 
 	const minTorchSize = 0
-	const maxTorchSize = 25
+	const maxTorchSize = 20
 
 	let torchSize = maxTorchSize
 	let clientX, clientY
+	let touched = false
 
 	function moveTorch(event) {
-		clientX = event.clientX
-		clientY = event.clientY
+		if (event.changedTouches && event.changedTouches.length > 0) {
+			clientX = event.changedTouches[0].clientX
+			clientY = event.changedTouches[0].clientY
+		} else {
+			clientX = event.clientX
+			clientY = event.clientY
+		}
+
 		torch.style.clipPath = `circle(${torchSize}% at ${clientX}px ${clientY}px)`
 	}
 
-	banner.addEventListener('mousemove', moveTorch)
+	function mouseMoveHandler(event) {
+		moveTorch(event)
+	}
+
+	function touchStartHandler(event) {
+		event.preventDefault()
+
+		if (touched) {
+			banner.removeEventListener('mousemove', mouseMoveHandler)
+			banner.removeEventListener('touchstart', touchStartHandler)
+			banner.removeEventListener('touchmove', touchMoveHandler)
+
+			torch.style.clipPath = `circle(0% at ${clientX}px ${clientY}px)`
+		} else {
+			touched = true
+			setTimeout(() => {
+				touched = false
+			}, 500)
+			moveTorch(event)
+		}
+	}
+
+	function touchMoveHandler(event) {
+		moveTorch(event)
+	}
+
+	startButton.addEventListener('click', (event) => {
+		moveTorch(event)
+		startButton.style.visibility = 'hidden'
+
+		banner.addEventListener('mousemove', mouseMoveHandler)
+		banner.addEventListener('touchstart', touchStartHandler)
+		banner.addEventListener('touchmove', touchMoveHandler)
+	})
 })()
 
 // TYPEWRITER ======================================
