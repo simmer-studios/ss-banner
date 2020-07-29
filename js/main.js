@@ -117,6 +117,13 @@ document.documentElement.style.setProperty('--vh', `${vh}px`)
 			turnOnTorch(event)
 		}
 	})
+
+	switchButton.addEventListener('touchstart', function (event) {
+		event.preventDefault()
+		if (!switchButton.classList.contains('on')) {
+			turnOnTorch(event)
+		}
+	})
 })()
 
 // TYPEWRITER ======================================
