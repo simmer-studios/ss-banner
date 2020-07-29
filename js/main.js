@@ -116,6 +116,7 @@
 		if (!switchButton.classList.contains('on')) {
 			turnOnTorch(event)
 		}
+		switchButton.blur()
 	})
 })()
 
