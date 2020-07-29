@@ -1,5 +1,5 @@
 .dark-bg {
-	z-index: 0;
+	z-index: 1;
 	position: relative;
 	padding: 15px;
 	min-height: 100vh; /* Fallback for browsers that do not support Custom Properties */
@@ -32,6 +32,7 @@
 
 	// only shows up on touch devices
 	.switch-button {
+		z-index: 2;
 		cursor: pointer;
 		color: $color-white;
 		font-size: 16px;
@@ -41,6 +42,10 @@
 		border: none;
 		padding: 20px;
 		animation: pulsing 4s ease-in-out infinite;
+
+		&.on {
+			z-index: 0;
+		}
 
 		&:hover,
 		&:active,

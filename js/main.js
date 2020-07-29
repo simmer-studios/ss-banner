@@ -121,7 +121,6 @@
 
 	// SWITCH BUTTON ==================================
 	switchButton.addEventListener('click', function (event) {
-		alert('Click!')
 		if (!switchButton.classList.contains('on')) {
 			turnOnTorch(event)
 		}
@@ -129,7 +128,6 @@
 
 	switchButton.addEventListener('touchstart', function (event) {
 		event.preventDefault()
-		alert('Click!')
 
 		if (!switchButton.classList.contains('on')) {
 			turnOnTorch(event)
