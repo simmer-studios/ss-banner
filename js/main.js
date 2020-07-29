@@ -2,14 +2,39 @@
 ;(function main() {
 	const banner = document.querySelector('.dark-bg')
 	const torch = document.querySelector('.light-bg')
-	const startButton = document.querySelector('.start-button')
+	const switchButton = document.querySelector('.switch-button')
+	// const startButton = document.querySelector('.start-button')
+	// const stopButton = document.querySelector('.stop-button')
 
 	const minTorchSize = 0
 	const maxTorchSize = 20
 
-	let torchSize = maxTorchSize
+	let torchSize = minTorchSize
 	let clientX, clientY
 	let touched = false
+
+	// TORCH ==================
+	function increaseTorchSize() {
+		if (torchSize < maxTorchSize) {
+			torchSize += 1
+			torch.style.clipPath = `circle(${torchSize}% at ${clientX}px ${clientY}px)`
+			requestAnimationFrame(increaseTorchSize)
+		} else {
+			switchButton.innerHTML = 'Double Tap Anywhere to Stop'
+			switchButton.classList.add('on')
+		}
+	}
+
+	function decreaseTorchSize() {
+		if (torchSize > minTorchSize) {
+			torchSize -= 1
+			torch.style.clipPath = `circle(${torchSize}% at ${clientX}px ${clientY}px)`
+			requestAnimationFrame(decreaseTorchSize)
+		} else {
+			switchButton.innerHTML = 'Tap Here to Start'
+			switchButton.classList.remove('on')
+		}
+	}
 
 	function moveTorch(event) {
 		if (event.changedTouches && event.changedTouches.length > 0) {
@@ -20,27 +45,54 @@
 			clientY = event.clientY
 		}
 
+		console.log('Move')
 		torch.style.clipPath = `circle(${torchSize}% at ${clientX}px ${clientY}px)`
+	}
+
+	function turnOnTorch(event) {
+		moveTorch(event)
+		increaseTorchSize()
+
+		banner.addEventListener('click', mouseClickHandler)
+		banner.addEventListener('mousemove', mouseMoveHandler)
+		banner.addEventListener('touchstart', touchStartHandler)
+		banner.addEventListener('touchmove', touchMoveHandler)
+	}
+
+	function turnOffTorch() {
+		decreaseTorchSize()
+
+		banner.addEventListener('click', mouseClickHandler)
+		banner.removeEventListener('mousemove', mouseMoveHandler)
+		banner.removeEventListener('touchstart', touchStartHandler)
+		banner.removeEventListener('touchmove', touchMoveHandler)
+	}
+
+	// MOUSE ==========================
+	function mouseClickHandler() {
+		console.log('Mouse Click')
+
+		if (touched) {
+			turnOffTorch()
+		} else {
+			touched = true
+			setTimeout(() => (touched = false), 500)
+		}
 	}
 
 	function mouseMoveHandler(event) {
 		moveTorch(event)
 	}
 
+	// TOUCH ==========================
 	function touchStartHandler(event) {
 		event.preventDefault()
 
 		if (touched) {
-			banner.removeEventListener('mousemove', mouseMoveHandler)
-			banner.removeEventListener('touchstart', touchStartHandler)
-			banner.removeEventListener('touchmove', touchMoveHandler)
-
-			torch.style.clipPath = `circle(0% at ${clientX}px ${clientY}px)`
+			turnOffTorch()
 		} else {
 			touched = true
-			setTimeout(() => {
-				touched = false
-			}, 500)
+			setTimeout(() => (touched = false), 500)
 			moveTorch(event)
 		}
 	}
@@ -49,13 +101,12 @@
 		moveTorch(event)
 	}
 
-	startButton.addEventListener('click', (event) => {
-		moveTorch(event)
-		startButton.style.visibility = 'hidden'
-
-		banner.addEventListener('mousemove', mouseMoveHandler)
-		banner.addEventListener('touchstart', touchStartHandler)
-		banner.addEventListener('touchmove', touchMoveHandler)
+	// SWITCH BUTTON ==================================
+	switchButton.addEventListener('click', (event) => {
+		switchButton.blur()
+		if (!switchButton.classList.contains('on')) {
+			turnOnTorch(event)
+		}
 	})
 })()
 

@@ -28,14 +28,21 @@
 	}
 
 	// only shows up on touch devices
-	.start-button {
+	.switch-button {
 		cursor: pointer;
 		color: $color-white;
 		font-size: 16px;
 		background: none;
 		border: none;
-		padding: 5px 15px;
+		padding: 20px;
 		animation: pulsing 4s ease-in-out infinite;
+
+		&:hover,
+		&:active,
+		&:focus {
+			outline: none;
+			animation: none;
+		}
 	}
 
 	.light-bg {
