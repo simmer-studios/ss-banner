@@ -85,11 +85,12 @@
 		.slogan {
 			font-family: 'Zeuty Sans', sans-serif;
 			width: 100%;
-			max-width: 400px;
+			max-width: 350px;
 			font-size: 50px;
 			word-wrap: break-word;
 			text-transform: uppercase;
 			text-align: center;
+			letter-spacing: -2px;
 
 			@include respond(tablet-portrait) {
 				max-width: 300px;
