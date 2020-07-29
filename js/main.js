@@ -26,7 +26,6 @@
 	// TORCH ==================
 	function updateClipPath() {
 		torch.style.clipPath = `circle(${torchSize}% at ${clientX}px ${clientY}px)`
-		torch.style['-webkit-clip-path'] = `circle(${torchSize}% at ${clientX}px ${clientY}px)`
 	}
 
 	function increaseTorchSize() {
@@ -92,7 +91,7 @@
 			touched = true
 			setTimeout(function () {
 				touched = false
-			}, 500)
+			}, 400)
 		}
 	}
 
@@ -110,7 +109,7 @@
 			touched = true
 			setTimeout(function () {
 				touched = false
-			}, 500)
+			}, 400)
 			moveTorch(event)
 		}
 	}
@@ -121,14 +120,6 @@
 
 	// SWITCH BUTTON ==================================
 	switchButton.addEventListener('click', function (event) {
-		if (!switchButton.classList.contains('on')) {
-			turnOnTorch(event)
-		}
-	})
-
-	switchButton.addEventListener('touchstart', function (event) {
-		event.preventDefault()
-
 		if (!switchButton.classList.contains('on')) {
 			turnOnTorch(event)
 		}
