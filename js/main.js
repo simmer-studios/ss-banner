@@ -121,10 +121,12 @@
 
 	// SWITCH BUTTON ==================================
 	switchButton.addEventListener('click', function (event) {
+		alert('Clicked')
+		switchButton.blur()
 		if (!switchButton.classList.contains('on')) {
+			alert('iOS Sux')
 			turnOnTorch(event)
 		}
-		switchButton.blur()
 	})
 })()
 
