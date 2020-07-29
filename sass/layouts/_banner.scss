@@ -172,6 +172,17 @@
 				}
 			}
 
+			.noodles {
+				animation: rotating 4s ease-in-out infinite;
+				width: 250px;
+				top: 35%;
+				right: 25%;
+
+				@include respond(phone) {
+					display: none;
+				}
+			}
+
 			.tako {
 				bottom: 35%;
 				right: 45%;
