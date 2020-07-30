@@ -39,7 +39,7 @@
 		background: none;
 		border: none;
 		padding: 20px;
-		animation: pulsing 4s ease-in-out infinite;
+		animation: fade-in-out 4s ease-in-out infinite;
 
 		&.on {
 			z-index: 0;
@@ -49,7 +49,6 @@
 		&:active,
 		&:focus {
 			outline: none;
-			opacity: 1 !important;
 		}
 
 		@include respond(small-phone) {
