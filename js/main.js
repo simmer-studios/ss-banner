@@ -17,7 +17,7 @@
 ;(function main() {
 	const banner = document.querySelector('.dark-bg')
 	const torch = document.querySelector('.light-bg')
-	const switchButton = document.getElementById('switch-button')
+	const switchButton = document.querySelector('.switch-button')
 
 	const minTorchSize = 0
 	const maxTorchSize = 20
@@ -121,17 +121,32 @@
 	}
 
 	// SWITCH BUTTON ==================================
-	switchButton.addEventListener('click', function (event) {
-		if (!switchButton.classList.contains('on')) {
-			turnOnTorch(event)
-		}
-	})
+	const sButtonTexts = ['Please wait..', 'Downloading assets..', 'Loading..']
 
-	switchButton.addEventListener('touchstart', function (event) {
-		event.preventDefault()
-		if (!switchButton.classList.contains('on')) {
-			turnOnTorch(event)
-		}
+	let i = 0
+
+	const interval = setInterval(function () {
+		i = i < sButtonTexts.length - 1 ? i + 1 : 0
+		switchButton.innerHTML = sButtonTexts[i]
+	}, 4000)
+
+	window.addEventListener('load', function () {
+		clearInterval(interval)
+
+		switchButton.innerHTML = 'Tap Here to Start'
+
+		switchButton.addEventListener('click', function (event) {
+			if (!switchButton.classList.contains('on')) {
+				turnOnTorch(event)
+			}
+		})
+
+		switchButton.addEventListener('touchstart', function (event) {
+			event.preventDefault()
+			if (!switchButton.classList.contains('on')) {
+				turnOnTorch(event)
+			}
+		})
 	})
 })()
 
