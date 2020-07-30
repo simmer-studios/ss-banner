@@ -1,16 +1,17 @@
 ;(function configureViewportHeight() {
-	window.addEventListener(
-		'resize',
-		debounce(
-			function () {
-				console.log(window.innerWidth + ' x ' + window.innerHeight)
-				const vh = window.innerHeight * 0.01
-				document.documentElement.style.setProperty('--vh', `${vh}px`)
-			},
-			1000,
-			{ immediate: true }
-		)
-	)
+	function updateViewportHeight() {
+		console.log(window.innerWidth + ' x ' + window.innerHeight)
+		const vh = window.innerHeight * 0.01
+		document.documentElement.style.setProperty('--vh', `${vh}px`)
+	}
+
+	const debouncedUpdateViewportHeight = debounce(updateViewportHeight, 500, {
+		immediate: true,
+	})
+
+	debouncedUpdateViewportHeight()
+
+	window.addEventListener('resize', debouncedUpdateViewportHeight)
 })()
 
 // TORCH ==========================================
