@@ -1,5 +1,17 @@
-const vh = window.innerHeight * 0.01
-document.documentElement.style.setProperty('--vh', `${vh}px`)
+;(function configureViewportHeight() {
+	window.addEventListener(
+		'resize',
+		debounce(
+			function () {
+				console.log(window.innerWidth + ' x ' + window.innerHeight)
+				const vh = window.innerHeight * 0.01
+				document.documentElement.style.setProperty('--vh', `${vh}px`)
+			},
+			1000,
+			{ immediate: true }
+		)
+	)
+})()
 
 // TORCH ==========================================
 ;(function main() {
@@ -67,7 +79,7 @@ document.documentElement.style.setProperty('--vh', `${vh}px`)
 	function turnOffTorch() {
 		decreaseTorchSize()
 
-		banner.addEventListener('click', mouseClickHandler)
+		banner.removeEventListener('click', mouseClickHandler)
 		banner.removeEventListener('mousemove', mouseMoveHandler)
 		banner.removeEventListener('touchstart', touchStartHandler)
 		banner.removeEventListener('touchmove', touchMoveHandler)
@@ -75,8 +87,6 @@ document.documentElement.style.setProperty('--vh', `${vh}px`)
 
 	// MOUSE ==========================
 	function mouseClickHandler() {
-		console.log('Mouse Click')
-
 		if (touched) {
 			turnOffTorch()
 		} else {
@@ -178,3 +188,28 @@ document.documentElement.style.setProperty('--vh', `${vh}px`)
 
 	setTimeout(write, writeDelay)
 })()
+
+// DEBOUNCE ====================
+function debounce(func, wait, { immediate } = { immediate: false }) {
+	let timeout = null
+
+	return function executedFunction(...args) {
+		if (immediate && timeout === null) {
+			func(...args)
+
+			const later = () => {
+				timeout = null
+			}
+
+			timeout = setTimeout(later, wait)
+		} else {
+			const later = () => {
+				timeout = null
+				func(...args)
+			}
+
+			clearTimeout(timeout)
+			timeout = setTimeout(later, wait)
+		}
+	}
+}
