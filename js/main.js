@@ -56,11 +56,11 @@
 
 	function moveTorch(event) {
 		if (event.changedTouches && event.changedTouches.length > 0) {
-			clientX = event.changedTouches[0].clientX
-			clientY = event.changedTouches[0].clientY - 75
+			clientX = event.changedTouches[0].pageX
+			clientY = event.changedTouches[0].pageY - 100
 		} else {
-			clientX = event.clientX
-			clientY = event.clientY
+			clientX = event.pageX
+			clientY = event.pageY
 		}
 
 		updateClipPath()
