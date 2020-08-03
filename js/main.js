@@ -57,7 +57,7 @@
 	function moveTorch(event) {
 		if (event.changedTouches && event.changedTouches.length > 0) {
 			clientX = event.changedTouches[0].pageX
-			clientY = event.changedTouches[0].pageY - 100
+			clientY = event.changedTouches[0].pageY - 75
 		} else {
 			clientX = event.pageX
 			clientY = event.pageY
