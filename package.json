@@ -4,7 +4,7 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"start": "npm-run-all --parallel devServer watch:sass",
+		"start": "npm run compile:sass && npm-run-all --parallel devServer watch:sass",
 		"build": "npm-run-all compile:sass prefix:css minify:css create:folders copy:files",
 		"prebuild": "rm -rf build",
 		"postbuild": "npm run delete:css",

@@ -121,13 +121,18 @@
 	}
 
 	// SWITCH BUTTON ==================================
-	const sButtonTexts = ['Please wait..', 'Downloading assets..', 'Loading..']
+	const sButtonTexts = [
+		'Please wait..',
+		'Slicing ingredients..',
+		'Loading..',
+		'Shining silverware..',
+	]
 
 	let i = 0
 
 	const interval = setInterval(function () {
-		i = i < sButtonTexts.length - 1 ? i + 1 : 0
 		switchButton.innerHTML = sButtonTexts[i]
+		i = i < sButtonTexts.length - 1 ? i + 1 : 0
 	}, 4000)
 
 	window.addEventListener('load', function () {
