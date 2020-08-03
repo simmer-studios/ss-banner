@@ -72,6 +72,7 @@
 
 		banner.addEventListener('click', mouseClickHandler)
 		banner.addEventListener('mousemove', mouseMoveHandler)
+		banner.addEventListener('mouseleave', turnOffTorch)
 		banner.addEventListener('touchstart', touchStartHandler)
 		banner.addEventListener('touchmove', touchMoveHandler)
 	}
@@ -81,6 +82,7 @@
 
 		banner.removeEventListener('click', mouseClickHandler)
 		banner.removeEventListener('mousemove', mouseMoveHandler)
+		banner.removeEventListener('mouseleave', turnOffTorch)
 		banner.removeEventListener('touchstart', touchStartHandler)
 		banner.removeEventListener('touchmove', touchMoveHandler)
 	}
