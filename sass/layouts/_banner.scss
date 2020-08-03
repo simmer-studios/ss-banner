@@ -26,6 +26,7 @@
 		max-width: 600px;
 		padding: 15px;
 		animation: floating 4s ease-in-out infinite;
+		user-select: none;
 	}
 
 	// only shows up on touch devices
@@ -40,6 +41,7 @@
 		border: none;
 		padding: 20px;
 		animation: fade-in-out 4s ease-in-out infinite;
+		user-select: none;
 
 		&.on {
 			z-index: 0;
@@ -93,6 +95,7 @@
 			letter-spacing: -2px;
 			word-spacing: 0px;
 			line-height: 1;
+			user-select: none;
 
 			@include respond(tablet-portrait) {
 				max-width: 300px;
@@ -120,6 +123,7 @@
 				position: absolute;
 				width: 35px;
 				animation: floating 4s ease-in-out infinite;
+				user-select: none;
 
 				@include respond(phone) {
 					width: 25px;
