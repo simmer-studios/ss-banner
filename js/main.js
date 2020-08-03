@@ -162,7 +162,7 @@
 	let textCharIndex = 0
 	let textArrayIndex = 0
 	const texts = [
-		'Designs that suit your taste',
+		'Serving brands that suit your taste',
 		'Execution sliced to precision',
 		'A bucket of fresh ideas',
 		'Mixed in a pot of creativity',
