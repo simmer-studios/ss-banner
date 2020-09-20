@@ -3,5 +3,5 @@
 </p>
 
 <p align="center">
-    <a href="https://simmer-studios.netlify.app/">Check It Out</a>
+    <a href="https://www.simmer-studios.com/">Check It Out</a>
 </p>
