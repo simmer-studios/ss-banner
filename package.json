@@ -9,10 +9,10 @@
 		"prebuild": "rm -rf build",
 		"postbuild": "npm run delete:css",
 		"devServer": "live-server",
-		"watch:sass": "node-sass sass/main.scss css/style.css -w",
-		"compile:sass": "node-sass sass/main.scss css/style.comp.css",
+		"watch:sass": "sass sass/main.scss css/style.css -w",
+		"compile:sass": "sass sass/main.scss css/style.comp.css",
 		"prefix:css": "postcss css/style.comp.css --use autoprefixer -o css/style.prefix.css",
-		"minify:css": "node-sass css/style.prefix.css build/css/style.css --output-style compressed",
+		"minify:css": "sass css/style.prefix.css build/css/style.css --output-style compressed",
 		"create:folders": "mkdirp build/js",
 		"copy:files": "cp index.html build && cp js/* build/js",
 		"delete:css": "rm -rf css"
